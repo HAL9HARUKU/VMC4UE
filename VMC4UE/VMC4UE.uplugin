@@ -1,7 +1,7 @@
 {
 	"FileVersion" : 3,
 	"Version" : 1,
-	"VersionName" : "0.1.0",
+	"VersionName" : "0.1.1",
 	"FriendlyName" : "VMC4UE",
 	"Description" : "Virtual Motion Capture runtime for UE4",
 	"Category" : "Other",

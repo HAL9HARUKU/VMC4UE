@@ -14,8 +14,8 @@ public:
 	FVMC4UEStreamingBoneTransform() {}
 	~FVMC4UEStreamingBoneTransform() {}
 
-    FVector Location;
-    FQuat Rotation;
+	FVector Location = FVector::ZeroVector;
+	FQuat Rotation = FQuat::Identity;
 };
 
 UCLASS(BlueprintType)
