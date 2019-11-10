@@ -25,4 +25,16 @@ class VMC4UE_API UVMC4UEBoneMappingAssetFactory : public UFactory
         EObjectFlags Flags,
         UObject *Context,
         FFeedbackContext *Warn) override;
+
+	virtual UObject* FactoryCreateText(
+		UClass* InClass,
+		UObject* InParent,
+		FName InName,
+		EObjectFlags Flags,
+		UObject* Context,
+		const TCHAR* Type,
+		const TCHAR*& Buffer,
+		const TCHAR* BuferEnd,
+		FFeedbackContext* Warn
+	) override;
 };
