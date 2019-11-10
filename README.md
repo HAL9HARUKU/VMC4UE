@@ -1,5 +1,5 @@
 ## VMC4UE とは
-VirtualMotionCapture から OSC で姿勢情報を受信してUEに反映するためのプラグインです。
+VirtualMotionCapture から OSC で姿勢情報を受信して UE に反映するためのプラグインです。
 
 動作には sh_akira さんの VirtualMotionCapture(v0.36～) が必要です。
 https://sh-akira.github.io/VirtualMotionCapture/download.html
@@ -19,5 +19,8 @@ MIT
 [はるく](https://twitter.com/HAL9_HARUKU)
 
 ## 履歴
+2019/11/10 v0.2.0
+ボーンマップを Unity で生成して UE4 でインポートするように変更。
+
 2019/11/09 v0.1.0
 VirtualMotionCapture で使用する VRM と同じ VRM での位置・姿勢の反映のみ対応。
