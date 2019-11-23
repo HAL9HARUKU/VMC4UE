@@ -16,9 +16,9 @@ class VMC4UE_API UVMC4UEBlueprintFunctionLibrary : public UBlueprintFunctionLibr
     GENERATED_BODY()
 
 public:
-    UFUNCTION(BlueprintCallable, Category = "VMC")
+    UFUNCTION(BlueprintCallable, Category = "VMC4UE")
     static void OnReceivedVMC(UVMC4UEStreamingSkeletalMeshTransform *SkeletalMeshTransform, const FName &Address, const TArray<FOscDataElemStruct> &Data, const FString &SenderIp);
 
-	UFUNCTION(BlueprintCallable, Category = "VMC")
+	UFUNCTION(BlueprintCallable, Category = "VMC4UE")
 	static void CreateObject(UClass *ObjectClass, UObject* &CreatedObject);
 };
