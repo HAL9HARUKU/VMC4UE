@@ -28,6 +28,7 @@ public:
 
 protected:
     // UAnimGraphNode_Base interface
+	virtual FString GetNodeCategory() const override;
     virtual void ValidateAnimNodeDuringCompilation(USkeleton *ForSkeleton, FCompilerResultsLog &MessageLog) override;
     virtual FEditorModeID GetEditorMode() const override;
     virtual void CopyNodeDataToPreviewNode(FAnimNode_Base *InPreviewNode) override;

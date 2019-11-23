@@ -8,7 +8,7 @@
 #include "AnimNode_VMC4UE.generated.h"
 
 class USkeletalMeshComponent;
-class UVMC4UEBoneMapping;
+class UVMC4UEVRMMapping;
 class UVMC4UEStreamingSkeletalMeshTransform;
 
 /**
@@ -20,7 +20,7 @@ struct VMC4UE_API FAnimNode_VMC4UE : public FAnimNode_SkeletalControlBase
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Alpha, meta = (PinShownByDefault))
-	TWeakObjectPtr<UVMC4UEBoneMapping> BoneMapping;
+	TWeakObjectPtr<UVMC4UEVRMMapping> VRMMapping;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Alpha, meta = (PinShownByDefault))
 	TWeakObjectPtr<UVMC4UEStreamingSkeletalMeshTransform> StreamingSkeletalMeshTransform;

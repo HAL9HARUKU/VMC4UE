@@ -18,12 +18,19 @@ public:
 	FQuat Rotation = FQuat::Identity;
 };
 
+/**
+ *
+ */
 UCLASS(BlueprintType)
 class VMC4UE_API UVMC4UEStreamingSkeletalMeshTransform : public UObject
 {
 	GENERATED_BODY()
 
 public:
+	FRWLock RWLock;
+	float Time = 0.0f;
 	FVMC4UEStreamingBoneTransform Root;
 	TMap<FName, FVMC4UEStreamingBoneTransform> Bones;
+	TMap<FName, float> CurrentBlendShapes;
+	TMap<FName, float> FutureBlendShapes;
 };

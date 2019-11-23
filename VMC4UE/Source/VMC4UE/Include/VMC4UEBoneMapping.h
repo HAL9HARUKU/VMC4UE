@@ -6,342 +6,283 @@
 #include "UObject/NoExportTypes.h"
 #include "VMC4UEBoneMapping.generated.h"
 
-USTRUCT()
-struct FVMC4UEBoneMappingText
+/**
+ *
+ */
+USTRUCT(BlueprintType)
+struct VMC4UE_API FVMC4UEBoneMapping
 {
-	GENERATED_USTRUCT_BODY()
+    GENERATED_USTRUCT_BODY()
 
-	UPROPERTY()
-	FName Hips = TEXT("");
+public:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName Hips = TEXT("");
 
-	UPROPERTY()
-	FName LeftUpperLeg = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftUpperLeg = TEXT("");
 
-	UPROPERTY()
-	FName RightUpperLeg = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightUpperLeg = TEXT("");
 
-	UPROPERTY()
-	FName LeftLowerLeg = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftLowerLeg = TEXT("");
 
-	UPROPERTY()
-	FName RightLowerLeg = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightLowerLeg = TEXT("");
 
-	UPROPERTY()
-	FName LeftFoot = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftFoot = TEXT("");
 
-	UPROPERTY()
-	FName RightFoot = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightFoot = TEXT("");
 
-	UPROPERTY()
-	FName Spine = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName Spine = TEXT("");
 
-	UPROPERTY()
-	FName Chest = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName Chest = TEXT("");
 
-	UPROPERTY()
-	FName Neck = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName Neck = TEXT("");
 
-	UPROPERTY()
-	FName Head = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName Head = TEXT("");
 
-	UPROPERTY()
-	FName LeftShoulder = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftShoulder = TEXT("");
 
-	UPROPERTY()
-	FName RightShoulder = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightShoulder = TEXT("");
 
-	UPROPERTY()
-	FName LeftUpperArm = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftUpperArm = TEXT("");
 
-	UPROPERTY()
-	FName RightUpperArm = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightUpperArm = TEXT("");
 
-	UPROPERTY()
-	FName LeftLowerArm = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftLowerArm = TEXT("");
 
-	UPROPERTY()
-	FName RightLowerArm = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightLowerArm = TEXT("");
 
-	UPROPERTY()
-	FName LeftHand = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftHand = TEXT("");
 
-	UPROPERTY()
-	FName RightHand = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightHand = TEXT("");
 
-	UPROPERTY()
-	FName LeftToes = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftToes = TEXT("");
 
-	UPROPERTY()
-	FName RightToes = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightToes = TEXT("");
 
-	UPROPERTY()
-	FName LeftEye = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftEye = TEXT("");
 
-	UPROPERTY()
-	FName RightEye = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightEye = TEXT("");
 
-	UPROPERTY()
-	FName Jaw = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName Jaw = TEXT("");
 
-	UPROPERTY()
-	FName LeftThumbProximal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftThumbProximal = TEXT("");
 
-	UPROPERTY()
-	FName LeftThumbIntermediate = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftThumbIntermediate = TEXT("");
 
-	UPROPERTY()
-	FName LeftThumbDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftThumbDistal = TEXT("");
 
-	UPROPERTY()
-	FName LeftIndexProximal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftIndexProximal = TEXT("");
 
-	UPROPERTY()
-	FName LeftIndexIntermediate = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftIndexIntermediate = TEXT("");
 
-	UPROPERTY()
-	FName LeftIndexDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftIndexDistal = TEXT("");
 
-	UPROPERTY()
-	FName LeftMiddleProximal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftMiddleProximal = TEXT("");
 
-	UPROPERTY()
-	FName LeftMiddleIntermediate = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftMiddleIntermediate = TEXT("");
 
-	UPROPERTY()
-	FName LeftMiddleDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftMiddleDistal = TEXT("");
 
-	UPROPERTY()
-	FName LeftRingProximal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftRingProximal = TEXT("");
 
-	UPROPERTY()
-	FName LeftRingIntermediate = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftRingIntermediate = TEXT("");
 
-	UPROPERTY()
-	FName LeftRingDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftRingDistal = TEXT("");
 
-	UPROPERTY()
-	FName LeftLittleProximal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftLittleProximal = TEXT("");
 
-	UPROPERTY()
-	FName LeftLittleIntermediate = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftLittleIntermediate = TEXT("");
 
-	UPROPERTY()
-	FName LeftLittleDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName LeftLittleDistal = TEXT("");
 
-	UPROPERTY()
-	FName RightThumbProximal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightThumbProximal = TEXT("");
 
-	UPROPERTY()
-	FName RightThumbIntermediate = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightThumbIntermediate = TEXT("");
 
-	UPROPERTY()
-	FName RightThumbDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightThumbDistal = TEXT("");
 
-	UPROPERTY()
-	FName RightIndexProximal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightIndexProximal = TEXT("");
 
-	UPROPERTY()
-	FName RightIndexIntermediate = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightIndexIntermediate = TEXT("");
 
-	UPROPERTY()
-	FName RightIndexDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightIndexDistal = TEXT("");
 
-	UPROPERTY()
-	FName RightMiddleProximal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightMiddleProximal = TEXT("");
 
-	UPROPERTY()
-	FName RightMiddleIntermediate = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightMiddleIntermediate = TEXT("");
 
-	UPROPERTY()
-	FName RightMiddleDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightMiddleDistal = TEXT("");
 
-	UPROPERTY()
-	FName RightRingProximal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightRingProximal = TEXT("");
 
-	UPROPERTY()
-	FName RightRingIntermediate = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightRingIntermediate = TEXT("");
 
-	UPROPERTY()
-	FName RightRingDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightRingDistal = TEXT("");
 
-	UPROPERTY()
-	FName RightLittleProximal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightLittleProximal = TEXT("");
 
-	UPROPERTY()
-	FName RightLittleIntermediate = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightLittleIntermediate = TEXT("");
 
-	UPROPERTY()
-	FName RightLittleDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Mapping")
+    FName RightLittleDistal = TEXT("");
 };
 
 /**
  *
  */
-UCLASS()
-class VMC4UE_API UVMC4UEBoneMapping : public UObject
+USTRUCT(BlueprintType)
+struct VMC4UE_API FVMC4UEBlendShapeMesh
+{
+    GENERATED_USTRUCT_BODY()
+
+public:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Blend Shape Mesh")
+    FName Name;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Blend Shape Mesh")
+    TArray<FName> Targets;
+};
+
+/**
+ *
+ */
+USTRUCT(BlueprintType)
+struct VMC4UE_API FVMC4UEBlendShapeState
+{
+    GENERATED_USTRUCT_BODY()
+
+public:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Blend Shape State")
+    int32 Index;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Blend Shape State")
+    float Weight;
+};
+
+/**
+ *
+ */
+USTRUCT(BlueprintType)
+struct VMC4UE_API FVMC4UEBlendShapeMeshState
+{
+    GENERATED_USTRUCT_BODY()
+
+public:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Blend Shape Mesh State")
+    FName Name;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Blend Shape Mesh State")
+    TArray<FVMC4UEBlendShapeState> Targets;
+};
+
+/**
+ *
+ */
+USTRUCT(BlueprintType)
+struct VMC4UE_API FVMC4UEBlendShapeClip
+{
+    GENERATED_USTRUCT_BODY()
+
+public:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Blend Shape Clip")
+    FName Name;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Blend Shape Clip")
+    TArray<FVMC4UEBlendShapeMeshState> States;
+};
+
+/**
+ *
+ */
+USTRUCT(BlueprintType)
+struct VMC4UE_API FVMC4UEBlendShape
+{
+    GENERATED_USTRUCT_BODY()
+
+public:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Blend Shape")
+    TArray<FVMC4UEBlendShapeMesh> Meshes;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Blend Shape")
+    TArray<FVMC4UEBlendShapeClip> Clips;
+};
+
+/**
+ *
+ */
+USTRUCT(BlueprintType)
+struct VMC4UE_API FVMC4UEVRMMappingData
+{
+    GENERATED_USTRUCT_BODY()
+
+public:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "VRM Mapping")
+    FVMC4UEBoneMapping BoneMapping;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "VRM Mapping")
+    FVMC4UEBlendShape BlendShape;
+};
+
+/**
+ *
+ */
+UCLASS(BlueprintType)
+class VMC4UE_API UVMC4UEVRMMapping : public UObject
 {
     GENERATED_BODY()
 
 public:
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName Hips = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftUpperLeg = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightUpperLeg = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftLowerLeg = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightLowerLeg = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftFoot = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightFoot = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName Spine = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName Chest = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName Neck = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName Head = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftShoulder = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightShoulder = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftUpperArm = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightUpperArm = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftLowerArm = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightLowerArm = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftHand = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightHand = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftToes = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightToes = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftEye = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightEye = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName Jaw = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftThumbProximal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftThumbIntermediate = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftThumbDistal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftIndexProximal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftIndexIntermediate = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftIndexDistal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftMiddleProximal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftMiddleIntermediate = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftMiddleDistal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftRingProximal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftRingIntermediate = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftRingDistal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftLittleProximal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftLittleIntermediate = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName LeftLittleDistal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightThumbProximal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightThumbIntermediate = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightThumbDistal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightIndexProximal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightIndexIntermediate = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightIndexDistal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightMiddleProximal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightMiddleIntermediate = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightMiddleDistal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightRingProximal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightRingIntermediate = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightRingDistal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightLittleProximal = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightLittleIntermediate = TEXT("");
-
-    UPROPERTY(EditAnywhere, Category = "Bone Mapping")
-    FName RightLittleDistal = TEXT("");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "VRM Mapping")
+    FVMC4UEVRMMappingData VRMMapping;
 };

@@ -18,13 +18,6 @@ class VMC4UE_API UVMC4UEBoneMappingAssetFactory : public UFactory
 
     virtual bool DoesSupportClass(UClass *Class) override;
     virtual UClass *ResolveSupportedClass() override;
-    virtual UObject *FactoryCreateNew(
-        UClass *InClass,
-        UObject *InParent,
-        FName InName,
-        EObjectFlags Flags,
-        UObject *Context,
-        FFeedbackContext *Warn) override;
 
 	virtual UObject* FactoryCreateText(
 		UClass* InClass,

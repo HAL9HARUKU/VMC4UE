@@ -18,6 +18,11 @@ UAnimGraphNode_VMC4UE::UAnimGraphNode_VMC4UE(const FObjectInitializer &ObjectIni
     CurWidgetMode = (int32)FWidget::WM_Rotate;
 }
 
+FString UAnimGraphNode_VMC4UE::GetNodeCategory() const
+{
+	return TEXT("VMC4UE");
+}
+
 void UAnimGraphNode_VMC4UE::ValidateAnimNodeDuringCompilation(USkeleton *ForSkeleton, FCompilerResultsLog &MessageLog)
 {
     Super::ValidateAnimNodeDuringCompilation(ForSkeleton, MessageLog);
@@ -25,7 +30,7 @@ void UAnimGraphNode_VMC4UE::ValidateAnimNodeDuringCompilation(USkeleton *ForSkel
 
 FText UAnimGraphNode_VMC4UE::GetControllerDescription() const
 {
-    return LOCTEXT("TransformModifyBone", "VMC Transform (Modify) Bones");
+    return LOCTEXT("TransformModifyBone", "Modify VMC4UE Bones");
 }
 
 FText UAnimGraphNode_VMC4UE::GetTooltipText() const
@@ -60,7 +65,7 @@ void UAnimGraphNode_VMC4UE::CopyNodeDataToPreviewNode(FAnimNode_Base *InPreviewN
 {
     FAnimNode_VMC4UE *ModifyBone = static_cast<FAnimNode_VMC4UE *>(InPreviewNode);
 
-	ModifyBone->BoneMapping = Node.BoneMapping;
+	ModifyBone->VRMMapping = Node.VRMMapping;
 	ModifyBone->StreamingSkeletalMeshTransform = Node.StreamingSkeletalMeshTransform;
 }
 
