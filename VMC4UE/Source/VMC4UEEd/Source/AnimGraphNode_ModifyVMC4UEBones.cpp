@@ -1,44 +1,43 @@
 //#include "MySandboxDeveloper.h"
-#include "../Include/AnimGraphNode_VMC4UE.h"
+#include "../Include/AnimGraphNode_ModifyVMC4UEBones.h"
 
 // Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
-#include "../../VMC4UE/Include/AnimNode_VMC4UE.h"
+#include "../../VMC4UE/Include/AnimNode_ModifyVMC4UEBones.h"
 #include "UnrealWidget.h"
 #include "AnimNodeEditModes.h"
 #include "Kismet2/CompilerResultsLog.h"
 
 /////////////////////////////////////////////////////
-// UAnimGraphNode_VMC4UE
+// UAnimGraphNode_ModifyVMC4UEBones
 
 #define LOCTEXT_NAMESPACE "VMC4UEEd"
 
-UAnimGraphNode_VMC4UE::UAnimGraphNode_VMC4UE(const FObjectInitializer &ObjectInitializer)
+UAnimGraphNode_ModifyVMC4UEBones::UAnimGraphNode_ModifyVMC4UEBones(const FObjectInitializer &ObjectInitializer)
     : Super(ObjectInitializer)
 {
-    CurWidgetMode = (int32)FWidget::WM_Rotate;
 }
 
-FString UAnimGraphNode_VMC4UE::GetNodeCategory() const
+FString UAnimGraphNode_ModifyVMC4UEBones::GetNodeCategory() const
 {
 	return TEXT("VMC4UE");
 }
 
-void UAnimGraphNode_VMC4UE::ValidateAnimNodeDuringCompilation(USkeleton *ForSkeleton, FCompilerResultsLog &MessageLog)
+void UAnimGraphNode_ModifyVMC4UEBones::ValidateAnimNodeDuringCompilation(USkeleton *ForSkeleton, FCompilerResultsLog &MessageLog)
 {
     Super::ValidateAnimNodeDuringCompilation(ForSkeleton, MessageLog);
 }
 
-FText UAnimGraphNode_VMC4UE::GetControllerDescription() const
+FText UAnimGraphNode_ModifyVMC4UEBones::GetControllerDescription() const
 {
     return LOCTEXT("TransformModifyBone", "Modify VMC4UE Bones");
 }
 
-FText UAnimGraphNode_VMC4UE::GetTooltipText() const
+FText UAnimGraphNode_ModifyVMC4UEBones::GetTooltipText() const
 {
     return LOCTEXT("AnimGraphNode_ModifyBone_Tooltip", "The Transform Bone node");
 }
 
-FText UAnimGraphNode_VMC4UE::GetNodeTitle(ENodeTitleType::Type TitleType) const
+FText UAnimGraphNode_ModifyVMC4UEBones::GetNodeTitle(ENodeTitleType::Type TitleType) const
 {
     if ((TitleType == ENodeTitleType::ListView || TitleType == ENodeTitleType::MenuTitle))
     {
@@ -61,21 +60,9 @@ FText UAnimGraphNode_VMC4UE::GetNodeTitle(ENodeTitleType::Type TitleType) const
     return CachedNodeTitles[TitleType];
 }
 
-void UAnimGraphNode_VMC4UE::CopyNodeDataToPreviewNode(FAnimNode_Base *InPreviewNode)
+FEditorModeID UAnimGraphNode_ModifyVMC4UEBones::GetEditorMode() const
 {
-    FAnimNode_VMC4UE *ModifyBone = static_cast<FAnimNode_VMC4UE *>(InPreviewNode);
-
-	ModifyBone->VRMMapping = Node.VRMMapping;
-	ModifyBone->StreamingSkeletalMeshTransform = Node.StreamingSkeletalMeshTransform;
-}
-
-FEditorModeID UAnimGraphNode_VMC4UE::GetEditorMode() const
-{
-    return "AnimGraph.SkeletalControl.VMC4UE_ModifyBones";
-}
-
-void UAnimGraphNode_VMC4UE::CopyPinDefaultsToNodeData(UEdGraphPin *InPin)
-{
+    return "AnimGraphNode.ModifyVMC4UEBones";
 }
 
 #undef LOCTEXT_NAMESPACE

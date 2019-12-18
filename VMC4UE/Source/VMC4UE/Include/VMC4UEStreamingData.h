@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UEOSC/Include/UEOscElement.h"
 #include "VMC4UEStreamingData.generated.h"
 
 /**
@@ -21,7 +22,7 @@ public:
 /**
  *
  */
-UCLASS(BlueprintType)
+UCLASS()
 class VMC4UE_API UVMC4UEStreamingSkeletalMeshTransform : public UObject
 {
 	GENERATED_BODY()
@@ -33,4 +34,7 @@ public:
 	TMap<FName, FVMC4UEStreamingBoneTransform> Bones;
 	TMap<FName, float> CurrentBlendShapes;
 	TMap<FName, float> FutureBlendShapes;
+
+	UFUNCTION()
+	void OnReceived(const FName &Address, const TArray<FUEOSCElement> &Data, const FString &SenderIp);
 };

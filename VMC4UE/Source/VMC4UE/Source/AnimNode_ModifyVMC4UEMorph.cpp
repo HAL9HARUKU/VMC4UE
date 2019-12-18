@@ -4,6 +4,7 @@
 #include "AnimationRuntime.h"
 #include "../Include/VMC4UEStreamingData.h"
 #include "../Include/VMC4UEBoneMapping.h"
+#include "../Include/VMC4UEBlueprintFunctionLibrary.h"
 #include "Animation/AnimInstanceProxy.h"
 
 void FAnimNode_ModifyVMC4UEMorph::Initialize_AnyThread(const FAnimationInitializeContext &Context)
@@ -11,19 +12,7 @@ void FAnimNode_ModifyVMC4UEMorph::Initialize_AnyThread(const FAnimationInitializ
     Super::Initialize_AnyThread(Context);
     SourcePose.Initialize(Context);
 
-	MorphStates.Empty();
-	if (VRMMapping.IsValid())
-	{
-		FVMC4UEVRMMappingData& VRMMappingData = VRMMapping.Get()->VRMMapping;
-
-		for (auto& Mesh : VRMMappingData.BlendShape.Meshes)
-		{
-			for (int32 TargetIndex = 0; TargetIndex < Mesh.Targets.Num(); ++TargetIndex)
-			{
-				MorphStates.Add(Mesh.Targets[TargetIndex], 0.0f);
-			}
-		}
-	}
+	this->bIsInitialized = true;
 }
 
 void FAnimNode_ModifyVMC4UEMorph::CacheBones_AnyThread(const FAnimationCacheBonesContext &Context)
@@ -39,6 +28,23 @@ void FAnimNode_ModifyVMC4UEMorph::Evaluate_AnyThread(FPoseContext &Output)
 
     Output = SourceData;
 
+	// Watch VRMMapping
+	if (this->PrevVRMMapping != this->VRMMapping)
+	{
+		this->bIsInitialized = true;
+	}
+	this->PrevVRMMapping = this->VRMMapping;
+
+	// Build Mapping
+	if (this->bIsInitialized)
+	{
+		this->bIsInitialized = false;
+
+		BuildMapping();
+	}
+
+	// Get SkeletamMesh Transform
+	auto StreamingSkeletalMeshTransform = UVMC4UEBlueprintFunctionLibrary::GetStreamingSkeletalMeshTransform(this->Port);
 	if (!StreamingSkeletalMeshTransform.IsValid())
 	{
 		return;
@@ -47,61 +53,62 @@ void FAnimNode_ModifyVMC4UEMorph::Evaluate_AnyThread(FPoseContext &Output)
     //	Morph target and Material parameter curves
     USkeleton *Skeleton = Output.AnimInstanceProxy->GetSkeleton();
 
-	if (VRMMapping.IsValid())
+	if (!VRMMapping.IsValid())
 	{
-		FVMC4UEVRMMappingData& VRMMappingData = VRMMapping.Get()->VRMMapping;
+		return;
+	}
+	FVMC4UEVRMMappingData& VRMMappingData = VRMMapping.Get()->VRMMapping;
 
-		// Reset
-		for (auto& MorphState : MorphStates)
+	// Reset
+	for (auto& MorphState : MorphStates)
+	{
+		MorphState.Value = 0.0f;
+	}
+
+	// Calc
+	{
+		FRWScopeLock RWScopeLock(StreamingSkeletalMeshTransform->RWLock, FRWScopeLockType::SLT_ReadOnly);
+
+		for (const auto& BlendShape : StreamingSkeletalMeshTransform->CurrentBlendShapes)
 		{
-			MorphState.Value = 0.0f;
-		}
-
-		// Calc
-		{
-			FRWScopeLock RWScopeLock(StreamingSkeletalMeshTransform->RWLock, FRWScopeLockType::SLT_ReadOnly);
-
-			for (const auto& BlendShape : StreamingSkeletalMeshTransform->CurrentBlendShapes)
+			auto Clip = VRMMappingData.BlendShape.Clips.FindByPredicate([BlendShape](const FVMC4UEBlendShapeClip& Clip) {
+				return Clip.Name == BlendShape.Key;
+			});
+			if (Clip == nullptr)
 			{
-				auto Clip = VRMMappingData.BlendShape.Clips.FindByPredicate([BlendShape](const FVMC4UEBlendShapeClip& Clip) {
-					return Clip.Name == BlendShape.Key;
+				continue;
+			}
+			const auto& Meshes = VRMMappingData.BlendShape.Meshes;
+
+			for (const auto& State : Clip->States)
+			{
+				const auto Mesh = Meshes.FindByPredicate([State](const FVMC4UEBlendShapeMesh& Mesh) {
+					return Mesh.Name == State.Name;
 				});
-				if (Clip == nullptr)
+				if (Mesh == nullptr)
 				{
 					continue;
 				}
-				const auto& Meshes = VRMMappingData.BlendShape.Meshes;
 
-				for (const auto& State : Clip->States)
+				for (const auto& Target : State.Targets)
 				{
-					const auto Mesh = Meshes.FindByPredicate([State](const FVMC4UEBlendShapeMesh& Mesh) {
-						return Mesh.Name == State.Name;
-					});
-					if (Mesh == nullptr)
+					const FName& MorphName = Mesh->Targets[Target.Index];
+					if (MorphStates.Contains(MorphName))
 					{
-						continue;
-					}
-
-					for (const auto& Target : State.Targets)
-					{
-						const FName& MorphName = Mesh->Targets[Target.Index];
-						if (MorphStates.Contains(MorphName))
-						{
-							MorphStates[MorphName] = Target.Weight * BlendShape.Value / 100.0f;
-						}
+						MorphStates[MorphName] = Target.Weight * BlendShape.Value / 100.0f;
 					}
 				}
 			}
 		}
+	}
 
-		// Apply
-		for (auto& MorphState : MorphStates)
+	// Apply
+	for (auto& MorphState : MorphStates)
+	{
+		SmartName::UID_Type NameUID = Skeleton->GetUIDByName(USkeleton::AnimCurveMappingName, MorphState.Key);
+		if (NameUID != SmartName::MaxUID)
 		{
-			SmartName::UID_Type NameUID = Skeleton->GetUIDByName(USkeleton::AnimCurveMappingName, MorphState.Key);
-			if (NameUID != SmartName::MaxUID)
-			{
-				Output.Curve.Set(NameUID, MorphState.Value);
-			}
+			Output.Curve.Set(NameUID, MorphState.Value);
 		}
 	}
 }
@@ -126,3 +133,21 @@ void FAnimNode_ModifyVMC4UEMorph::RemoveCurve(int32 PoseIndex)
 }
 
 #endif // WITH_EDITOR
+
+void FAnimNode_ModifyVMC4UEMorph::BuildMapping()
+{
+	MorphStates.Empty();
+	if (!VRMMapping.IsValid())
+	{
+		return;
+	}
+	FVMC4UEVRMMappingData& VRMMappingData = VRMMapping.Get()->VRMMapping;
+
+	for (auto& Mesh : VRMMappingData.BlendShape.Meshes)
+	{
+		for (int32 TargetIndex = 0; TargetIndex < Mesh.Targets.Num(); ++TargetIndex)
+		{
+			MorphStates.Add(Mesh.Targets[TargetIndex], 0.0f);
+		}
+	}
+}

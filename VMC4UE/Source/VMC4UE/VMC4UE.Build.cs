@@ -8,6 +8,6 @@ public class VMC4UE : ModuleRules
     {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-        PublicDependencyModuleNames.AddRange (new string[] { "Core", "CoreUObject", "Engine", "UnrealEd", "InputCore", "HeadMountedDisplay", "AnimGraphRuntime", "OSC", "Json", "JsonUtilities" });
+        PublicDependencyModuleNames.AddRange (new string[] { "Core", "CoreUObject", "Engine", "UnrealEd", "InputCore", "HeadMountedDisplay", "AnimGraphRuntime", "Json", "JsonUtilities", "UEOSC" });
     }
 }

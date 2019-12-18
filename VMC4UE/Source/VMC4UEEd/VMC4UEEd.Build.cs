@@ -8,6 +8,6 @@ public class VMC4UEEd : ModuleRules
     {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-        PublicDependencyModuleNames.AddRange (new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "VMC4UE", "AnimGraph", "BlueprintGraph" });
+        PublicDependencyModuleNames.AddRange (new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "AnimGraph", "BlueprintGraph", "VMC4UE" });
     }
 }

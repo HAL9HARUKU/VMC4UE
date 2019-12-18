@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "Receive/OscReceiverComponent.h"
+#include "UEOSC/Include/UEOSCElement.h"
 #include "VMC4UEBlueprintFunctionLibrary.generated.h"
+
+class UVMC4UEStreamingSkeletalMeshTransform;
 
 /**
  * 
@@ -16,9 +18,6 @@ class VMC4UE_API UVMC4UEBlueprintFunctionLibrary : public UBlueprintFunctionLibr
     GENERATED_BODY()
 
 public:
-    UFUNCTION(BlueprintCallable, Category = "VMC4UE")
-    static void OnReceivedVMC(UVMC4UEStreamingSkeletalMeshTransform *SkeletalMeshTransform, const FName &Address, const TArray<FOscDataElemStruct> &Data, const FString &SenderIp);
-
-	UFUNCTION(BlueprintCallable, Category = "VMC4UE")
-	static void CreateObject(UClass *ObjectClass, UObject* &CreatedObject);
+    static void OnReceivedVMC(UVMC4UEStreamingSkeletalMeshTransform *SkeletalMeshTransform, const FName &Address, const TArray<FUEOSCElement> &Data, const FString &SenderIp);
+	static TWeakObjectPtr<UVMC4UEStreamingSkeletalMeshTransform> GetStreamingSkeletalMeshTransform(int32 Port);
 };
