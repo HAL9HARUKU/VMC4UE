@@ -5,7 +5,7 @@
 #include "BoneContainer.h"
 #include "BonePose.h"
 #include "BoneControllers/AnimNode_SkeletalControlBase.h"
-#include "AnimNode_VMC4UE.generated.h"
+#include "AnimNode_ModifyVMC4UEBones.generated.h"
 
 class USkeletalMeshComponent;
 class UVMC4UEVRMMapping;
@@ -15,7 +15,7 @@ class UVMC4UEStreamingSkeletalMeshTransform;
  *
  */
 USTRUCT(BlueprintInternalUseOnly)
-struct VMC4UE_API FAnimNode_VMC4UE : public FAnimNode_SkeletalControlBase
+struct VMC4UE_API FAnimNode_ModifyVMC4UEBones : public FAnimNode_SkeletalControlBase
 {
 	GENERATED_USTRUCT_BODY()
 
@@ -23,12 +23,13 @@ struct VMC4UE_API FAnimNode_VMC4UE : public FAnimNode_SkeletalControlBase
 	TWeakObjectPtr<UVMC4UEVRMMapping> VRMMapping;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Alpha, meta = (PinShownByDefault))
-	TWeakObjectPtr<UVMC4UEStreamingSkeletalMeshTransform> StreamingSkeletalMeshTransform;
+	int32 Port;
 
-	FAnimNode_VMC4UE() {}
-	FAnimNode_VMC4UE(const class FObjectInitializer &ObjectInitializer) {}
+	FAnimNode_ModifyVMC4UEBones() {}
+	FAnimNode_ModifyVMC4UEBones(const class FObjectInitializer &ObjectInitializer) {}
 
-    virtual void Initialize_AnyThread(const FAnimationInitializeContext &Context) override;
+    virtual void Initialize_AnyThread(const FAnimationInitializeContext& Context) override;
+	virtual void CacheBones_AnyThread(const FAnimationCacheBonesContext& Context) override;
 
     // FAnimNode_Base interface
     virtual void GatherDebugData(FNodeDebugData &DebugData) override;
@@ -46,7 +47,12 @@ private:
     // End of FAnimNode_SkeletalControlBase interface
 
 private:
+	void BuildMapping();
+
+	bool bIsInitialized;
 	TMap<FName, FName> BoneMappingSkeletonToVMC;
 	TArray<FTransform> InitialBones;
 	TArray<FBoneReference> BoneReferences;
+	
+	TWeakObjectPtr<UVMC4UEVRMMapping> PrevVRMMapping;
 };

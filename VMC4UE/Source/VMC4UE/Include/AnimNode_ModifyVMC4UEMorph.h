@@ -38,13 +38,11 @@ struct VMC4UE_API FAnimNode_ModifyVMC4UEMorph : public FAnimNode_Base
     UPROPERTY(EditAnywhere, EditFixedSize, BlueprintReadWrite, Category = Links)
     FPoseLink SourcePose;
 
-	TMap<FName, float> MorphStates;
-	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = ModifyCurve, meta = (PinShownByDefault))
 	TWeakObjectPtr<UVMC4UEVRMMapping> VRMMapping;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ModifyCurve, meta = (PinShownByDefault))
-	TWeakObjectPtr<UVMC4UEStreamingSkeletalMeshTransform> StreamingSkeletalMeshTransform;
+	int32 Port;
 
 	FAnimNode_ModifyVMC4UEMorph() {}
 	FAnimNode_ModifyVMC4UEMorph(const class FObjectInitializer &ObjectInitializer) {}
@@ -62,4 +60,12 @@ struct VMC4UE_API FAnimNode_ModifyVMC4UEMorph : public FAnimNode_Base
     /** Remove a curve from being modified */
     void RemoveCurve(int32 PoseIndex);
 #endif // WITH_EDITOR
+
+private:
+	void BuildMapping();
+	
+	bool bIsInitialized;
+	TMap<FName, float> MorphStates;
+
+	TWeakObjectPtr<UVMC4UEVRMMapping> PrevVRMMapping;
 };
