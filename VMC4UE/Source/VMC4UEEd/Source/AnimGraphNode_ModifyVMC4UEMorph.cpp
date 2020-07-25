@@ -47,10 +47,6 @@ void UAnimGraphNode_ModifyVMC4UEMorph::GetRemoveCurveMenuActions(FMenuBuilder &M
 {
 }
 
-void UAnimGraphNode_ModifyVMC4UEMorph::GetContextMenuActions(const FGraphNodeContextMenuBuilder &Context) const
-{
-}
-
 void UAnimGraphNode_ModifyVMC4UEMorph::RemoveCurvePin(FName CurveName)
 {
 }

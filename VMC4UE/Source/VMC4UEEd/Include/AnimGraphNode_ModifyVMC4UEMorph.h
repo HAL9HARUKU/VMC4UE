@@ -32,10 +32,6 @@ public:
     virtual void CustomizePinData(UEdGraphPin *Pin, FName SourcePropertyName, int32 ArrayIndex) const override;
     // End of UAnimGraphNode_Base interface
 
-    // UK2Node interface
-    virtual void GetContextMenuActions(const FGraphNodeContextMenuBuilder &Context) const override;
-    // End of UK2Node interface
-
 private:
     /** Remove a curve pin with the given name */
     void RemoveCurvePin(FName CurveName);

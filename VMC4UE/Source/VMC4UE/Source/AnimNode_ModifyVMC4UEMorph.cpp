@@ -6,6 +6,7 @@
 #include "../Include/VMC4UEBoneMapping.h"
 #include "../Include/VMC4UEBlueprintFunctionLibrary.h"
 #include "Animation/AnimInstanceProxy.h"
+#include "Runtime/Launch/Resources/Version.h"
 
 void FAnimNode_ModifyVMC4UEMorph::Initialize_AnyThread(const FAnimationInitializeContext &Context)
 {
@@ -119,7 +120,11 @@ void FAnimNode_ModifyVMC4UEMorph::Update_AnyThread(const FAnimationUpdateContext
     SourcePose.Update(Context);
 
     // Evaluate any BP logic plugged into this node
-    EvaluateGraphExposedInputs.Execute(Context);
+#if ENGINE_MINOR_VERSION >= 22
+	GetEvaluateGraphExposedInputs().Execute(Context);
+#else
+	EvaluateGraphExposedInputs.Execute(Context);
+#endif
 }
 
 #if WITH_EDITOR
