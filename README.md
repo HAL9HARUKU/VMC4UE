@@ -7,7 +7,8 @@ https://sh-akira.github.io/VirtualMotionCapture/download.html
 ※それ以前のバージョン(～v0.35)では使えません
 
 ## 動作環境
-- UE4.21
+- UE4.25
+- UE4.26
 
 ## 使い方
 https://github.com/HAL9HARUKU/VMC4UE/wiki
@@ -19,6 +20,11 @@ MIT
 [はるく](https://twitter.com/HAL9_HARUKU)
 
 ## 履歴
+
+2020/12/06 v0.4.3
+UE4.26 対応。
+UE4.21 の DLL 非サポート。
+
 2020/07/25 v0.4.2
 UE4.25 対応。
 2 バージョン対応のため DLL ファイルを再び削除。
@@ -38,3 +44,4 @@ DLL ファイルを追加。
 
 2019/11/09 v0.1.0
 VirtualMotionCapture で使用する VRM と同じ VRM での位置・姿勢の反映のみ対応。
+
