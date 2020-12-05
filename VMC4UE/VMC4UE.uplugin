@@ -1,7 +1,7 @@
 {
 	"FileVersion" : 3,
 	"Version" : 1,
-	"VersionName" : "0.4.2",
+	"VersionName" : "0.4.3",
 	"FriendlyName" : "VMC4UE",
 	"Description" : "Virtual Motion Capture runtime for UE4",
 	"Category" : "Other",
@@ -23,8 +23,14 @@
 		},
 		{
 			"Name": "VMC4UEEd",
-			"Type": "Developer",
+			"Type": "DeveloperTool",
 			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "UEOSC",
+			"Enabled": true
 		}
 	]
 }
