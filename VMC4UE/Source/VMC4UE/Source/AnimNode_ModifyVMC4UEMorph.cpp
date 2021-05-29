@@ -120,7 +120,7 @@ void FAnimNode_ModifyVMC4UEMorph::Update_AnyThread(const FAnimationUpdateContext
     SourcePose.Update(Context);
 
     // Evaluate any BP logic plugged into this node
-#if ENGINE_MINOR_VERSION >= 22
+#if ENGINE_MAJOR_VERSION >= 5 || (ENGINE_MAJOR_VERSION == 4 && ENGINE_MINOR_VERSION >= 22)
 	GetEvaluateGraphExposedInputs().Execute(Context);
 #else
 	EvaluateGraphExposedInputs.Execute(Context);
