@@ -5,6 +5,8 @@
 #include "VMC4UE/Include/VMC4UEOSCManager.h"
 #include "UEOSC/Include/UEOSCElement.h"
 #include "UEOSC/Include/UEOSCReceiver.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "GenericPlatform/GenericPlatformMath.h"
 
 void UVMC4UEBlueprintFunctionLibrary::OnReceivedVMC(UVMC4UEStreamingSkeletalMeshTransform *SkeletalMeshTransform, const FName &Address, const TArray<FUEOSCElement> &Data, const FString &SenderIp)
 {
@@ -150,4 +152,31 @@ TWeakObjectPtr<UVMC4UEStreamingSkeletalMeshTransform> UVMC4UEBlueprintFunctionLi
 		return NewStreamingSkeletalMeshTransform;
 	}
 	return nullptr;
+}
+
+void UVMC4UEBlueprintFunctionLibrary::RefreshConnection(float Seconds)
+{
+	UVMC4UEOSCManager* OSCManager = UVMC4UEOSCManager::GetInstance();
+	if (OSCManager == nullptr)
+	{
+		return;
+	}
+
+	Seconds = FGenericPlatformMath::Min(Seconds, 1.0f);
+
+	// Reconnect
+	{
+		FRWScopeLock RWScopeLock(OSCManager->RWLock, FRWScopeLockType::SLT_ReadOnly);
+
+		auto Now = UKismetMathLibrary::Now();
+		
+		for (auto& OscReceiver : OSCManager->OscReceivers)
+		{
+			auto Span = Now - OscReceiver->GetLastUpdateTime();
+			if (Span.GetTotalSeconds() > (double)Seconds)
+			{
+				OscReceiver->Reconnect();
+			}
+		}
+	}
 }

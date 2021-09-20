@@ -7,9 +7,9 @@ https://sh-akira.github.io/VirtualMotionCapture/download.html
 ※それ以前のバージョン(～v0.35)では使えません
 
 ## 動作環境
-- UE4.25
 - UE4.26
-- UE5.0EA1
+- UE4.27
+- UE5.0EA2
 
 ## 使い方
 https://github.com/HAL9HARUKU/VMC4UE/wiki
@@ -21,6 +21,12 @@ MIT
 [はるく](https://twitter.com/HAL9_HARUKU)
 
 ## 履歴
+
+2021/09/20 v0.4.5
+UE4.27 対応。
+UE5.0EA を 1 から 2 に変更。
+UE4.25 の DLL 非サポート。
+データを長時間受信できないコネクションの再接続機能を追加。
 
 2021/05/29 v0.4.4
 UE5.0EA1 対応。

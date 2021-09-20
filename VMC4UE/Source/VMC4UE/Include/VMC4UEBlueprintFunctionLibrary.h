@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UObject/ObjectMacros.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "UEOSC/Include/UEOSCElement.h"
 #include "VMC4UEBlueprintFunctionLibrary.generated.h"
@@ -12,7 +13,7 @@ class UVMC4UEStreamingSkeletalMeshTransform;
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class VMC4UE_API UVMC4UEBlueprintFunctionLibrary : public UBlueprintFunctionLibrary
 {
     GENERATED_BODY()
@@ -20,4 +21,7 @@ class VMC4UE_API UVMC4UEBlueprintFunctionLibrary : public UBlueprintFunctionLibr
 public:
     static void OnReceivedVMC(UVMC4UEStreamingSkeletalMeshTransform *SkeletalMeshTransform, const FName &Address, const TArray<FUEOSCElement> &Data, const FString &SenderIp);
 	static TWeakObjectPtr<UVMC4UEStreamingSkeletalMeshTransform> GetStreamingSkeletalMeshTransform(int32 Port);
+    
+    UFUNCTION(BlueprintCallable)
+    static void RefreshConnection(float Seconds);
 };
