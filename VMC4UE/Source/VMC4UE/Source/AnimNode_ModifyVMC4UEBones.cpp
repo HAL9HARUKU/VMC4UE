@@ -3,6 +3,7 @@
 #include "BoneControllers/AnimNode_ModifyBone.h"
 #include "AnimationRuntime.h"
 #include "Animation/AnimInstanceProxy.h"
+#include "Misc/EngineVersionComparison.h"
 #include "../Include/VMC4UEStreamingData.h"
 #include "../Include/VMC4UEBoneMapping.h"
 #include "../Include/VMC4UEBlueprintFunctionLibrary.h"
@@ -143,7 +144,11 @@ void FAnimNode_ModifyVMC4UEBones::InitializeBoneReferences(const FBoneContainer 
 	}
 	
 	// Get Initial Bone Transform
+#if UE_VERSION_OLDER_THAN(5,0,0)
 	this->InitialBones = RequiredBones.GetRefPoseCompactArray();
+#else
+	this->InitialBones = RequiredBones.GetRefPoseArray();
+#endif
 }
 
 void FAnimNode_ModifyVMC4UEBones::BuildMapping()
