@@ -8,7 +8,7 @@ UVMC4UEOSCManager* UVMC4UEOSCManager::Instance = nullptr;
 
 UVMC4UEOSCManager* UVMC4UEOSCManager::GetInstance()
 {
-	if (Instance == nullptr)
+	if (!IsValid(Instance))
 	{
 		Instance = NewObject< UVMC4UEOSCManager >();
 		check(Instance)

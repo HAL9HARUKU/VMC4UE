@@ -22,11 +22,11 @@ public:
     FRWLock RWLock;
 
 	UPROPERTY()
-    TMap<int32, UVMC4UEStreamingSkeletalMeshTransform *> StreamingSkeletalMeshTransformMap;
+    TMap<int32, UVMC4UEStreamingSkeletalMeshTransform*> StreamingSkeletalMeshTransformMap;
 
 	UPROPERTY()
 	TArray<UUEOSCReceiver*> OscReceivers;
-	
+
 	static UVMC4UEOSCManager* GetInstance();
 
 private:

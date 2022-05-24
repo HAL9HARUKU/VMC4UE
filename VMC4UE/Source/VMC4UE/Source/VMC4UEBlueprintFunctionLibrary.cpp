@@ -10,7 +10,7 @@
 
 void UVMC4UEBlueprintFunctionLibrary::OnReceivedVMC(UVMC4UEStreamingSkeletalMeshTransform *SkeletalMeshTransform, const FName &Address, const TArray<FUEOSCElement> &Data, const FString &SenderIp)
 {
-	if (SkeletalMeshTransform == nullptr)
+	if (!IsValid(SkeletalMeshTransform))
 	{
 		return;
 	}
@@ -112,10 +112,10 @@ void UVMC4UEBlueprintFunctionLibrary::OnReceivedVMC(UVMC4UEStreamingSkeletalMesh
 	}
 }
 
-TWeakObjectPtr<UVMC4UEStreamingSkeletalMeshTransform> UVMC4UEBlueprintFunctionLibrary::GetStreamingSkeletalMeshTransform(int32 Port)
+UVMC4UEStreamingSkeletalMeshTransform* UVMC4UEBlueprintFunctionLibrary::GetStreamingSkeletalMeshTransform(int32 Port)
 {
 	UVMC4UEOSCManager* OSCManager = UVMC4UEOSCManager::GetInstance();
-	if (OSCManager == nullptr)
+	if (!IsValid(OSCManager))
 	{
 		return nullptr;
 	}
@@ -147,7 +147,7 @@ TWeakObjectPtr<UVMC4UEStreamingSkeletalMeshTransform> UVMC4UEBlueprintFunctionLi
 		OscReceiver->OSCReceiveEventDelegate.AddDynamic(NewStreamingSkeletalMeshTransform, &UVMC4UEStreamingSkeletalMeshTransform::OnReceived);
 		OscReceiver->Connect(Port);
 
-		OSCManager->OscReceivers.Add(OscReceiver);
+		OSCManager->OscReceivers.Emplace(OscReceiver);
 
 		return NewStreamingSkeletalMeshTransform;
 	}
@@ -157,7 +157,7 @@ TWeakObjectPtr<UVMC4UEStreamingSkeletalMeshTransform> UVMC4UEBlueprintFunctionLi
 void UVMC4UEBlueprintFunctionLibrary::RefreshConnection(float Seconds)
 {
 	UVMC4UEOSCManager* OSCManager = UVMC4UEOSCManager::GetInstance();
-	if (OSCManager == nullptr)
+	if (!IsValid(OSCManager))
 	{
 		return;
 	}

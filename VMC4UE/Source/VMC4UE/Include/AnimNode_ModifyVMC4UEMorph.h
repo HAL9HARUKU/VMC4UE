@@ -39,7 +39,7 @@ struct VMC4UE_API FAnimNode_ModifyVMC4UEMorph : public FAnimNode_Base
     FPoseLink SourcePose;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = ModifyCurve, meta = (PinShownByDefault))
-	TWeakObjectPtr<UVMC4UEVRMMapping> VRMMapping;
+    UVMC4UEVRMMapping* VRMMapping;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ModifyCurve, meta = (PinShownByDefault))
 	int32 Port;
@@ -67,5 +67,5 @@ private:
 	bool bIsInitialized;
 	TMap<FName, float> MorphStates;
 
-	TWeakObjectPtr<UVMC4UEVRMMapping> PrevVRMMapping;
+    UVMC4UEVRMMapping* PrevVRMMapping;
 };

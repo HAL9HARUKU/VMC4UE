@@ -46,7 +46,7 @@ void FAnimNode_ModifyVMC4UEMorph::Evaluate_AnyThread(FPoseContext &Output)
 
 	// Get SkeletamMesh Transform
 	auto StreamingSkeletalMeshTransform = UVMC4UEBlueprintFunctionLibrary::GetStreamingSkeletalMeshTransform(this->Port);
-	if (!StreamingSkeletalMeshTransform.IsValid())
+	if (!IsValid(StreamingSkeletalMeshTransform))
 	{
 		return;
 	}
@@ -54,11 +54,11 @@ void FAnimNode_ModifyVMC4UEMorph::Evaluate_AnyThread(FPoseContext &Output)
     //	Morph target and Material parameter curves
     USkeleton *Skeleton = Output.AnimInstanceProxy->GetSkeleton();
 
-	if (!VRMMapping.IsValid())
+	if (!IsValid(this->VRMMapping))
 	{
 		return;
 	}
-	FVMC4UEVRMMappingData& VRMMappingData = VRMMapping.Get()->VRMMapping;
+	FVMC4UEVRMMappingData& VRMMappingData = this->VRMMapping->VRMMapping;
 
 	// Reset
 	for (auto& MorphState : MorphStates)
@@ -142,11 +142,11 @@ void FAnimNode_ModifyVMC4UEMorph::RemoveCurve(int32 PoseIndex)
 void FAnimNode_ModifyVMC4UEMorph::BuildMapping()
 {
 	MorphStates.Empty();
-	if (!VRMMapping.IsValid())
+	if (!IsValid(this->VRMMapping))
 	{
 		return;
 	}
-	FVMC4UEVRMMappingData& VRMMappingData = VRMMapping.Get()->VRMMapping;
+	FVMC4UEVRMMappingData& VRMMappingData = VRMMapping->VRMMapping;
 
 	for (auto& Mesh : VRMMappingData.BlendShape.Meshes)
 	{

@@ -20,7 +20,7 @@ struct VMC4UE_API FAnimNode_ModifyVMC4UEBones : public FAnimNode_SkeletalControl
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Alpha, meta = (PinShownByDefault))
-	TWeakObjectPtr<UVMC4UEVRMMapping> VRMMapping;
+	UVMC4UEVRMMapping* VRMMapping;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Alpha, meta = (PinShownByDefault))
 	int32 Port;
@@ -49,10 +49,14 @@ private:
 private:
 	void BuildMapping();
 
+	UPROPERTY()
 	bool bIsInitialized;
+	UPROPERTY()
 	TMap<FName, FName> BoneMappingSkeletonToVMC;
+	UPROPERTY()
 	TArray<FTransform> InitialBones;
+	UPROPERTY()
 	TArray<FBoneReference> BoneReferences;
-	
-	TWeakObjectPtr<UVMC4UEVRMMapping> PrevVRMMapping;
+	UPROPERTY()
+	UVMC4UEVRMMapping* PrevVRMMapping;
 };

@@ -31,7 +31,7 @@ UObject *UVMC4UEBoneMappingAssetFactory::FactoryCreateText(UClass *InClass, UObj
     FString TextData = FString(Buffer);
 
     UVMC4UEVRMMapping *NewAsset = CastChecked<UVMC4UEVRMMapping>(StaticConstructObject_Internal(InClass, InParent, InName, Flags));
-    if (NewAsset == nullptr)
+    if (!IsValid(NewAsset))
     {
         return nullptr;
     }

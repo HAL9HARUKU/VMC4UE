@@ -59,7 +59,7 @@ void FAnimNode_ModifyVMC4UEBones::EvaluateSkeletalControl_AnyThread(FComponentSp
 	
 	// Get SkeletamMesh Transform
 	auto StreamingSkeletalMeshTransform = UVMC4UEBlueprintFunctionLibrary::GetStreamingSkeletalMeshTransform(this->Port);
-	if (!StreamingSkeletalMeshTransform.IsValid())
+	if (!IsValid(StreamingSkeletalMeshTransform))
 	{
 		return;
 	}
@@ -155,12 +155,12 @@ void FAnimNode_ModifyVMC4UEBones::BuildMapping()
 {
 	// Build BoneMappingSkeletonToVMC
 	BoneMappingSkeletonToVMC.Empty();
-	if (!VRMMapping.IsValid())
+	if (!IsValid(VRMMapping))
 	{
 		UE_LOG(LogTemp, Error, TEXT("[AnimNode_VMC4UE] BoneMapping is None"));
 		return;
 	}
-	FVMC4UEBoneMapping& BoneMapping = VRMMapping.Get()->VRMMapping.BoneMapping;
+	FVMC4UEBoneMapping& BoneMapping = VRMMapping->VRMMapping.BoneMapping;
 	if (BoneMapping.Hips.Compare("None") != 0)
 		BoneMappingSkeletonToVMC.Emplace(BoneMapping.Hips, TEXT("Hips"));
 	if (BoneMapping.LeftUpperLeg.Compare("None") != 0)

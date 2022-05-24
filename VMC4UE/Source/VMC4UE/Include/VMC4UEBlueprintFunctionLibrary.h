@@ -20,7 +20,7 @@ class VMC4UE_API UVMC4UEBlueprintFunctionLibrary : public UBlueprintFunctionLibr
 
 public:
     static void OnReceivedVMC(UVMC4UEStreamingSkeletalMeshTransform *SkeletalMeshTransform, const FName &Address, const TArray<FUEOSCElement> &Data, const FString &SenderIp);
-	static TWeakObjectPtr<UVMC4UEStreamingSkeletalMeshTransform> GetStreamingSkeletalMeshTransform(int32 Port);
+	static UVMC4UEStreamingSkeletalMeshTransform* GetStreamingSkeletalMeshTransform(int32 Port);
     
     UFUNCTION(BlueprintCallable)
     static void RefreshConnection(float Seconds);
