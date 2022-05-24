@@ -22,6 +22,6 @@ public:
     static void OnReceivedVMC(UVMC4UEStreamingSkeletalMeshTransform *SkeletalMeshTransform, const FName &Address, const TArray<FUEOSCElement> &Data, const FString &SenderIp);
 	static UVMC4UEStreamingSkeletalMeshTransform* GetStreamingSkeletalMeshTransform(int32 Port);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, Category = "VMC4UE")
     static void RefreshConnection(float Seconds);
 };
