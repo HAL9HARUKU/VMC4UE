@@ -9,7 +9,7 @@ https://sh-akira.github.io/VirtualMotionCapture/download.html
 ## 動作環境
 - UE4.26
 - UE4.27
-- UE5.0Preview2
+- UE5.0
 
 ## 使い方
 https://github.com/HAL9HARUKU/VMC4UE/wiki
@@ -21,6 +21,10 @@ MIT
 [はるく](https://twitter.com/HAL9_HARUKU)
 
 ## 履歴
+
+2022/05/25 v0.4.7
+通信が途切れる問題の対策。
+一部環境で Shipping ができない問題の対策。
 
 2022/03/26 v0.4.6
 UE5.0 を EA2 から Preview2 に変更。
