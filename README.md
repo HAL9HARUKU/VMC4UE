@@ -10,6 +10,7 @@ https://sh-akira.github.io/VirtualMotionCapture/download.html
 - UE4.26
 - UE4.27
 - UE5.0
+- UE5.1
 
 ## 使い方
 https://github.com/HAL9HARUKU/VMC4UE/wiki
@@ -21,6 +22,9 @@ MIT
 [はるく](https://twitter.com/HAL9_HARUKU)
 
 ## 履歴
+
+2022/11/20 v0.4.7
+UE5.1 に対応。
 
 2022/05/25 v0.4.7
 通信が途切れる問題の対策。
