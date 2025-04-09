@@ -106,11 +106,15 @@ void FAnimNode_ModifyVMC4UEMorph::Evaluate_AnyThread(FPoseContext &Output)
 	// Apply
 	for (auto& MorphState : MorphStates)
 	{
+#if (ENGINE_MAJOR_VERSION == 5 && ENGINE_MINOR_VERSION >= 3)
+		Output.Curve.Set(MorphState.Key, MorphState.Value);
+#else
 		SmartName::UID_Type NameUID = Skeleton->GetUIDByName(USkeleton::AnimCurveMappingName, MorphState.Key);
 		if (NameUID != SmartName::MaxUID)
 		{
 			Output.Curve.Set(NameUID, MorphState.Value);
 		}
+#endif
 	}
 }
 
